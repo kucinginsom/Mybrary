@@ -147,5 +147,55 @@ inside upload folder
 # git push
 # git push heroku master
 
+when restart, file is remove in heroku. so we better find better solution on how to store image or file
 
+
+UPLOADED FILE
+
+filepond
+# npm i filepond
+Basic
+https://unpkg.com/filepond@4.29.1/dist/filepond.css -> css
+https://unpkg.com/filepond@^4/dist/filepond.js
+https://unpkg.com/filepond@^4/dist/filepond-plugin-file-encode/filepond-plugin-file-encode.js
+Plugins
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script> //before dist basic js
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/> //after basic css
+
+create js to manage filepond. fileUpload.js
+
+and then to use just add class="filepond" on input
+
+stylePanelAspectRatio-> setting size  same with Book Model set on fileUpload.js main filepond
+
+fileencoded form
+{
+    "id": "b56kpu6u9",
+    "name": "encoded-file.png",
+    "type": "image/png",
+    "size": 123456,
+    "metadata": {
+        "resize": {
+            "mode": "force",
+            "size": {
+                "width": 200,
+                "height": 200
+            }
+        },
+        "crop": {
+            "rect": {
+                "x": 0.19234,
+                "y": 0,
+                "width": 1,
+                "height": 0.61213
+            },
+            "aspectRatio": 1
+        }
+    },
+    "data": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAA..."
+}
+
+Buffer data to view as image object template string in html. data object
+data:{data-type};charset=utf-8;base64,{base64filetostring}
+data:image/jpeg;charset=utf-8;base64;"iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAA..."
 
