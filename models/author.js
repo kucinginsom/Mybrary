@@ -9,4 +9,4 @@ const authorSchema = new mongoose.Schema({
 })
 
 //Author is name of table inside database mongodb
-module.exports = mongoose.model('Author', authorSchema)
+module.exports = mongoose.model('Author', authorSchema) //|find me Author, ref: Book.js|

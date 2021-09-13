@@ -109,9 +109,41 @@ is deprecated. now just use express.urlencoded built in express
 # app.use(express.urlencoded({ extended: true }));
 # app.use(express.json());
 
+# Initialize Author Routes
+# git add .
+# git commit -m "Initial Author Routes"
+# git push
+
+HEROKU
+# git push heroku master
+
+push done. but error because heroku ip is not whitelist on mongodb online
+go to Cluser0
+click Connect
+Click Add a Different IP Addres
+entery : 0.0.0.0/0 -> thats mean whitelist all ip addres there is because no security need in this app
+
+go to heroku once again
+click More
+and Restart all dynos -> restart server when there is  change on mongodb online
+entry new authors
+
+Click Collection to see authors collection that created on mongodb atlas online
 
 
 
+/* ====================== BOOKS Section ===============*/
+create books.js
+install npm to create cover book image
+
+# npm i multer -> for file cover image. can work with multipart form
+remember enctype="multipart/form-data"
+
+# modify gitignore
+inside upload folder
+
+# git add .
+# git commit -m 'Book Section'
 
 
 

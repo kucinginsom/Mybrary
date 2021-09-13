@@ -4,12 +4,14 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 //deprecated. just use app.express const bodyParser = require('body-parser')
 
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const bookRouter = require('./routes/books')
 
 app.set('view engine','ejs')
 app.set('views', __dirname + '/views')
@@ -26,8 +28,10 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to mongoose'))
 /*end of mongoose intergrated with mongodb*/
 
+app.use(cors()) //cors management
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', bookRouter)
 
 
 
