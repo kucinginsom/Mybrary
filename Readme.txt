@@ -143,7 +143,9 @@ remember enctype="multipart/form-data"
 inside upload folder
 
 # git add .
-# git commit -m 'Book Section'
+# git commit -m 'Book Create/Index/New'
+# git push
+# git push heroku master
 
 
 
