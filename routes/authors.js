@@ -48,7 +48,7 @@ router.post('/', async (req,res) => {
 
 })
 
-//show page authors index
+//show page authors index - SHOW
 router.get('/:id', async (req,res) => {
     //req.params is what we define and id is we define before :id
     try{
@@ -66,7 +66,7 @@ router.get('/:id', async (req,res) => {
     //res.send('Show Author '+ req.params.id)
 })
 
-//edit route
+//edit route - EDIT
 router.get('/:id/edit', async (req,res) => {
     try{
         const author = await Author.findById(req.params.id) //built in function mongoose
@@ -77,7 +77,7 @@ router.get('/:id/edit', async (req,res) => {
 
 })
 
-//UPDATE. put method means update in rest
+//UPDATE. put method means update in rest - PUT
 router.put('/:id', async (req,res) => {
     let author
     try{
@@ -99,7 +99,7 @@ router.put('/:id', async (req,res) => {
     }
 })
 
-//delete method means update in rest
+//delete method means update in rest - DELETE
 router.delete('/:id', async (req,res) => {
     let author
     try{

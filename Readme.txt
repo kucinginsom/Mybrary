@@ -233,4 +233,7 @@ to includes partial on view. include plus path and name of view.ejs
 including function to pass to partial if there is
 <%- include('../partials/deleteForm', {url: `authors/${author.id}`}) %>
 
-
+# git add .
+# git commit -m "Finish Author Routes"
+# git push
+# git push heroku master
