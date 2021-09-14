@@ -83,8 +83,8 @@ router.post('/', async (req,res) => {
 
     try{
         const newBook = await book.save() //save to models books. book with params above
-        //res.redirect(`books/${newBook.id}`)
-        res.redirect('books')
+        res.redirect(`books/${newBook.id}`)
+        //res.redirect('books')
 
     } catch(err){
        //console.log(err)
@@ -104,8 +104,98 @@ router.post('/', async (req,res) => {
 //     }) //remove file from folderpath that not created succesfully cuz hold by validation
 // }
 
-/*function render new page of book if succes or error */
+//SHOW - method books
+router.get('/:id', async (req,res) => {
+    try{
+        //populate is to make const book become object and can access all of its information field, not only id
+        const book = await Book.findById(req.params.id).populate('author').exec()
+        res.render('books/show',{book : book})
+
+
+    } catch(err){
+        console.log(err)
+        res.redirect('/')
+    }
+})
+
+// EDIT -  Books Route
+router.get('/:id/edit', async (req,res) => {
+    try{
+        //func findbyid only give us id as return, when we wanna use author name or other collection we can use populate to make it object
+        const book = await Book.findById(req.params.id)
+        renderEditPage(res,book)
+    }
+    catch{
+        res.redirect('/')
+    }
+})
+
+
+// PUT Books Route - Update POST.
+router.put('/:id', async (req,res) => {    
+    let book 
+    try{
+        //specify column to update and save to models
+        book = await Book.findById(req.params.id)
+        book.title = req.body.title
+        book.author = req.body.author
+        book.publishDate = new Date(req.body.publishDate)
+        book.pageCount = req.body.pageCount
+        book.description = req.body.description
+       //check if cover book uploaded, then run save cover image. if not then we can accidentally delete existing upload image
+        if(req.body.cover != null && req.body.cover !== ''){
+            saveCover(book,req.body.cover)
+        }
+        await book.save() //save all changes to book models
+        res.redirect(`/books/${book.id}`)
+        //res.redirect('books')
+
+    } catch(err){
+       // console.log(err)
+        if(book != null){
+            renderEditPage(res, book, true) 
+        }
+        else{
+            res.redirect('/')
+        }
+        
+    }
+
+})
+
+// DELETE Books Route - delete POST.
+router.delete('/:id',async (req, res) => {
+    let book
+    try{
+        book = await Book.findById(req.params.id)
+        await book.remove()
+        res.redirect('/books')
+    } catch {
+        if(book != null){
+            res.render('books/show',{
+                book: book,
+                errorMessage: 'Could not remove book'
+            })
+        }
+        else{
+            res.redirect('/')
+        }
+    }
+
+})
+
+/*function render NEW page of book if succes or error */
 async function renderNewPage(res,book, hasError = false){
+    renderFormPage(res, book, 'new', hasError)
+}
+
+/*function render EDIT  page of book if succes or error */
+async function renderEditPage(res,book, hasError = false){
+    renderFormPage(res, book, 'edit', hasError)
+}
+
+/*function Global render Form page include EDIT and NEW of book if succes or error */
+async function renderFormPage(res,book, form, hasError = false){
     try{
         const authors = await Author.find({})
         
@@ -114,10 +204,18 @@ async function renderNewPage(res,book, hasError = false){
             book : book           
         }
         if(hasError){
-            params.errorMessage = 'Error Creating Book \n'+ book //add by ben - information log
+            if(form === 'edit'){
+                book["coverImage"] = ""//empty  params coverimage cuz contains buffer data too long to show on log
+                params.errorMessage = 'Error Updating Book \n' //add by ben - information log
+            }
+            else{
+                params.errorMessage = 'Error Creating Book \n' //add by ben - information log
+            }
+          console.log('renderFormPage(error): '+book)
+
         }
         
-        res.render('books/new', params)
+        res.render(`books/${form}`, params)
 
     } catch {
         res.redirect('/books')

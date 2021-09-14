@@ -237,3 +237,18 @@ including function to pass to partial if there is
 # git commit -m "Finish Author Routes"
 # git push
 # git push heroku master
+
+
+
+
+EDIT UPDATE DELETE BOOKS
+create view in book
+
+Show.ejs in folder view book
+
+if Book.findById(req.params.id) we only get id that pass
+when we want to get all of information of that model. use populate to make it object
+
+
+PUT
+
