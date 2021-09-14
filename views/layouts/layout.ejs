@@ -11,17 +11,20 @@
   <script defer src="/filepond/plugins/image-resize/script.js"></script>
   <script defer src="/filepond/dist/filepond.js"></script>
   <script defer src="/javascripts/fileUpload.js"></script>
+  <!--import main css to web-->
+  <link rel="stylesheet" href="/stylesheets/main.css">
 
 
   <title>Mybrary</title>
 </head>
 <body>
-    <!-- Before
-    <br> -->
-    <%- include('../partials/header.ejs') %>
-    <%- include('../partials/errorMessage.ejs') %>
-    <%- body %>
-    <!-- <br>
-    After -->
+    <div class="container">
+        <!-- header not in inner-container cuz we want inner container is content of web-->
+        <%- include('../partials/header.ejs') %>
+        <div class="inner-container">
+            <%- include('../partials/errorMessage.ejs') %>
+            <%- body %>
+        </div>
+    </div>
 </body>
 </html>

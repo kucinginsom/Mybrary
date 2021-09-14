@@ -252,3 +252,37 @@ when we want to get all of information of that model. use populate to make it ob
 
 PUT
 
+DELETE
+
+# git add .
+# git commit -m "Finishing Books Route"
+# git push
+# git push heroku master
+
+
+
+STYLING 
+transfonter.com -> generate css from font. get that folder fonts here
+
+create folder on public stylesheets/shared/fonts.css
+
+create stylesheets/main.css file
+
+include main.css inside views/layouts/layout.ejs
+ <link rel="stylesheet" href="/stylesheets/main.css">
+
+
+create stylesheets/shared/variable.css -> place to store all css variable that used
+
+create stylesheets/shared/header.css
+
+add class element on partials/header.ejs
+
+#Live server web extension:
+no need to refresh2 when using css
+open live server web extension install on browser
+install Live Server by ritwick dey in Vscode extension
+
+Actual Server Address: http://localhost:3000 //mongodb server addres
+Live Server Address: http://127.0.0.1:5500/ //live server
+check Go Live in visual code studio to get ip address to entry the live server address
