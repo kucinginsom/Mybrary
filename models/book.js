@@ -37,7 +37,7 @@ const bookSchema = new mongoose.Schema({
         required: true    
     },    
     author:{
-        type : mongoose.Schema.Types.ObjectId, //this is want to reference schema autho tha created before
+        type : mongoose.Schema.Types.ObjectId, //this is want to reference schema author tha created before
         required: true,
         ref : 'Author' //name must be same as the model. reference author.js |find me author|
     }    

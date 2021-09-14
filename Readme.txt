@@ -199,3 +199,38 @@ Buffer data to view as image object template string in html. data object
 data:{data-type};charset=utf-8;base64,{base64filetostring}
 data:image/jpeg;charset=utf-8;base64;"iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAA..."
 
+# git add .
+# git commit -m "File Upload Database to json"
+# git push
+# git push heroku master 
+
+
+
+
+EDIT UPDATE DELETE AUTHORS. mongodb course
+create method put and delete and get detail on authors route
+
+# npm i method-override -> to let browser know if we send post, we can override with params put or delete
+include and use on server.js
+app.use(methodOverride('_method'))
+
+dont use get method because google get all of it and can be accidentaly delete when user click that
+to use delete and update or put method, need method override
+
+button delete and update is on folder partials cuz can be use everywhere
+cuz it can use on authors and book
+
+EDit equal to new method
+update equal to create method
+delete similar to update method
+
+remember the order of route, cuz it can cause one of route not call
+
+to add view.ejs on layout.ejs
+<%- nameofview %>
+
+to includes partial on view. include plus path and name of view.ejs
+including function to pass to partial if there is
+<%- include('../partials/deleteForm', {url: `authors/${author.id}`}) %>
+
+
