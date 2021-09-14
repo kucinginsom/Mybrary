@@ -1,0 +1,84 @@
+:root{
+    --form-label-font-size: 1.2rem;
+    --form-input-background-color: hsl(var(--color-base-hue), 100%, 31%);
+    --form-input-border-color: hsl(var(--color-base-hue), 100%, 50%);    
+    --form-input-border-color-light: hsl(var(--color-base-hue), 100%, 80%);    
+}
+
+.form-row{
+    display: flex;
+    margin-bottom: .5rem;
+}
+.form-item{
+    display: flex;
+    flex-direction: column; /*label always be on top input box element*/
+    margin-left: 2rem;
+    flex-grow: 1; /*how they would grow. just 1*/
+    flex-basis: 0; /*combine with basis 0. means they grow on same point*/
+}
+.form-item:first-child{
+    margin-left: 0;
+}
+
+.form-item-no-grow{
+    flex-grow: 0;
+}
+
+/*make button on end flex*/
+.form-row-end{
+    justify-content: flex-end;
+}
+
+.form-item > label {
+    font-size: var(--form-label-font-size);
+    margin-bottom: .25rem;
+    margin-left: .25rem;
+}
+
+.form-item input, .form-item select, .form-item textarea{
+    height: 2rem;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    border: 1px solid var(--form-input-border-color);
+    background-color: var(--form-input-background-color);
+    color: var(--color-text-light); 
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: 'Gotham Rounded';  /*input have their own style, manually overiide them*/ 
+    outline: none;
+}
+
+
+/*set highlight when focus on input*/
+.form-item input:focus, .form-item select:focus, .form-item textarea:focus{
+    border-color: var(--form-input-border-color-light);
+}
+
+/*turn of can resize the textare*/
+.form-item textarea{
+    height: 100%;
+    resize: none;
+}
+
+/*set option select to color black*/
+.form-item select option{
+    background-color: black;
+}
+
+/*Cover upload button filepond*/
+.filepond--root{
+    font-family: 'Gotham Rounded';
+    margin-bottom: 0;
+}
+/*form outside button*/
+.filepond--panel-root{
+  background-color: var(--form-input-background-color);
+  border: 1px solid var(--form-input-border-color)  
+}
+/*styling label inside button*/
+.filepond--drop-label{
+    color: var(--color-text-light);
+    font-size: inherit;
+}
+/*end of Cover upload button filepond*/
+

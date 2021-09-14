@@ -286,3 +286,16 @@ install Live Server by ritwick dey in Vscode extension
 Actual Server Address: http://localhost:3000 //mongodb server addres
 Live Server Address: http://127.0.0.1:5500/ //live server
 check Go Live in visual code studio to get ip address to entry the live server address
+
+# git add .
+# git commit -m "Added General Style"
+# git push
+# git push heroku master
+
+
+STYLING REST OF MENU - ADD BOOKS
+create file form.css
+dont forget to import to main.css
+
+input and button are not the same with core. they have own style
+so we should change manually. in this example font-family
