@@ -1,0 +1,15 @@
+<!-- locals.large means if outside view, include this partials bookGrid.ejs file and passing params with name large = true then this partials can catch it-->
+<% bookCoverClass = locals.large ? 'book-cover-large' : ''  %>
+
+<% bookGridClass = locals.large ? 'book-grid-large' : ''  %>
+
+<div class="book-grid <%= bookGridClass %>">
+    <% books.forEach(book => { %>
+        <a href="/books/<%= book.id %>">
+            <!-- remarks determinde size using class <img height="150" width="100" src="<%= book.coverImagePath %>"> -->
+            <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+        
+        </a>
+    <% }); %> 
+</div>
+  

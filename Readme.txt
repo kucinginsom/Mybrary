@@ -299,3 +299,34 @@ dont forget to import to main.css
 
 input and button are not the same with core. they have own style
 so we should change manually. in this example font-family
+
+overidde filepond root elemet
+
+.filepond--root{
+
+}
+
+# git add .
+# git commit -m "Form setup styles"
+# git push
+# git push heroku master
+
+
+FINISHING ALL STYLE and AP
+creat file author.css in shared
+index.ejs modify
+create div class author-row
+
+determine the size of book on different menu author, books or add outher
+with partials/bookGrids.ejs
+
+create books.css
+set height cover
+height: calc(var(book-cover-width) / var(book-cover-aspect-ratio)) // function calc to calculate in css  
+
+define book cover filepond on javascripts/fileUpload.js
+and then how to call css in javascript is there
+
+check if css is loaded first, if load then running the filepond code 
+add id="main-css" to css import in layout.ejs
+so we can call that inside js
